@@ -4,7 +4,7 @@ import "./style.css";
 function FriendCard(props) {
   return (
     <div className="card">
-      <img className="img-fluid remove" alt={props.name} src={props.image} onClick={() => props.removeFriend(props.id)}/>
+      <img className="img-fluid remove" alt={props.name} src={props.image} onClick={() => props.shuffle()}/>
     </div>
   );
 }

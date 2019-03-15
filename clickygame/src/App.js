@@ -18,6 +18,25 @@ class App extends Component {
     this.setState({ friends });
   };
 
+  shuffle = friends => {
+    let ctr = friends.length;
+    let temp; 
+    let index;
+
+    // While there are elements in the array
+    while (ctr > 0) {
+      // Pick a random index
+      index = Math.floor(Math.random() * ctr);
+      // Decrease ctr by 1
+      ctr--;
+      // And swap the last element with it
+      temp = friends[ctr];
+      friends[ctr] = friends[index];
+      friends[index] = temp;
+    }
+    return friends;
+  }
+
 
   //Increase score by one if the pic hasn't been clicked before
   //Shuttle cards
@@ -33,7 +52,7 @@ class App extends Component {
     return (
       <Wrapper>
         <NavBar></NavBar>
-        <Title>Friends List</Title>
+        <Title>Clicky Game</Title>
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}
