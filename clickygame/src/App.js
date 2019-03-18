@@ -10,9 +10,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    friends
+    friends, 
+    score: 0,
+    topScore: 0
     };
-  // this.shuffle = this.shuffle.bind(this);
   }
 
   shuffle = () => {
@@ -35,20 +36,29 @@ class App extends Component {
     this.setState({ friends });
   }
 
-  makeScore = () => {
-    let score = this.score;
-    let topScore = this.topScore;
+  removeFriend = id => {
+    // Filter this.state.friends for friends with an id not equal to the id being removed
+    const friends = this.state.friends.filter(friend => friend.id !== id);
+    // Set this.state.friends equal to the new friends array
+    this.setState({ friends });
+  };
+
+  makeScore = id => {
+    console.log("makeScore is working");
+    let score = this.state.score;
+    let topScore = this.state.topScore;
+    const friends = this.state.friends.filter(friend => friend.id !== id);
 
     console.log(score, topScore)
-    console.log("score is working")
-    // let count = this.props.score
-    // let topScore = this.props.topScore; 
 
-    // if (count < 12) {
-    //   count ++
-    // }
 
-    
+ 
+    if (score < 12) {
+      score ++
+      
+    } else if (score === 12)
+
+    this.setState({score, topScore, friends})
   }
 
 

@@ -11,7 +11,7 @@ function NavBar(props) {
                 Click on a picture to begin!
             </span>
             <span className="navbar-text">
-                Score: {props.makeScore}
+                Score: {props.score}
             </span>
             <span className="navbar-text">
                 Top Score: {props.topScore}
