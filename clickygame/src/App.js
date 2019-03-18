@@ -6,20 +6,18 @@ import NavBar from "./components/NavBar";
 import friends from "./friends.json";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
-  state = {
+
+  constructor(props) {
+    super(props);
+    this.state = {
     friends
-  };
+    };
+  // this.shuffle = this.shuffle.bind(this);
+  }
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
-
-  shuffle = friends => {
-    let ctr = friends.length;
+  shuffle = () => {
+    console.log("Shuffle works")
+    let ctr = this.state.friends.length;
     let temp; 
     let index;
 
@@ -34,7 +32,23 @@ class App extends Component {
       friends[ctr] = friends[index];
       friends[index] = temp;
     }
-    return friends;
+    this.setState({ friends });
+  }
+
+  makeScore = () => {
+    let score = this.score;
+    let topScore = this.topScore;
+
+    console.log(score, topScore)
+    console.log("score is working")
+    // let count = this.props.score
+    // let topScore = this.props.topScore; 
+
+    // if (count < 12) {
+    //   count ++
+    // }
+
+    
   }
 
 
@@ -51,11 +65,15 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <NavBar></NavBar>
+        <NavBar
+          makeScore={this.makeScore}
+          score={0}
+          topScore={0}>
+        </NavBar>
         <Title>Clicky Game</Title>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            shuffle={this.shuffle}
             id={friend.id}
             key={friend.id}
             image={friend.image}
