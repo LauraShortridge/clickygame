@@ -8,7 +8,7 @@ function NavBar(props) {
                 Clicky Game
             </span>
             <span className="navbar-text">
-                Click on a picture to begin!
+                {props.message}
             </span>
             <span className="navbar-text">
                 Score: {props.score}

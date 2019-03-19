@@ -13,7 +13,8 @@ class App extends Component {
       friends,
       clickedFriends: [null],
       score: 0,
-      topScore: 0
+      topScore: 0,
+      message: "Click on a picture to start!"
     };
   }
 
@@ -23,23 +24,6 @@ class App extends Component {
     let temp;
     let index;
 
-    // console.log("makeScore is working");
-    // let score = this.state.score;
-    // let topScore = this.state.topScore;
-    // const friends = this.state.friends.filter(friend => friend.id);
-    // const clickedFriends = this.state.clickedFriends;
-
-    // if (score < 12) {
-    //   score ++;
-    //   // clickedFriends.push();
-    // } else if (score === 12) {
-    //   console.log("you won!")
-    //   topScore = 12; 
-    // }
-
-    // console.log(score, topScore)
-    // console.log(clickedFriends)
-    // While there are elements in the array
     while (ctr > 0) {
       // Pick a random index
       index = Math.floor(Math.random() * ctr);
@@ -50,73 +34,55 @@ class App extends Component {
       friends[ctr] = friends[index];
       friends[index] = temp;
     }
-    
-    state(); 
-    // this.setState({
-    //   friends
-    //   // score, 
-    //   // topScore
-    // });
-  }
 
-  state() {
     this.setState({
-      friends,
-      score,
-      topScore
-    })
+      friends
+    });
   }
 
   makeScore = id => {
     console.log("makeScore is working");
     let score = this.state.score;
     let topScore = this.state.topScore;
-    const friends = this.state.friends;
     const clickedFriends = this.state.clickedFriends;
-    let i; 
+    let message = this.state.message;
 
-    for (i = 0; i < clickedFriends.length; i++) {
-      if (id !== clickedFriends[i] && score < 12) {
-        score++
-        clickedFriends.push(id);
-      } else if (score === 12) {
-        console.log("you won!")
-        topScore = 12;
+    console.log(clickedFriends.indexOf(id), "indexOf")
+
+    if (clickedFriends.indexOf(id) === -1 && score < 12) {
+      clickedFriends.push(id);
+      score++;
+      message = "Correct!";
+      console.log(clickedFriends, "new clickedFriends")
+      this.setState({clickedFriends, score, message});
+    } else if (score === 12) {
+      message = "You won!";
+      console.log("you won!")
+      this.setState({score: 0, clickedFriends: [null], topScore: 12, message})
+    } else {
+      console.log("you already clicked that, game over!")
+      if (score > topScore) {
+        topScore = score;
+        message = "Game over! Try again."
+        this.setState({score: 0, topScore, clickedFriends: [null], message})
       }
+      // this.setState({score: 0, topScore, clickedFriends: [null], message})
     }
 
-    // if (id === clickedFriends[i] && score < 12) {
-    //   score++
-    //   clickedFriends.push(id);
-    // } else if (score === 12) {
-    //   console.log("you won!")
-    //   topScore = 12;
-    // }
+    console.log(this.state.score, score, this.state.topScore, topScore)
+    console.log(clickedFriends, "bottom clickedFriends")
 
-    console.log(score, topScore)
-    console.log(clickedFriends)
-
-    this.setState({ friends, score, topScore })
+    // this.setState({ friends, score, topScore })
   }
 
 
-  //Increase score by one if the pic hasn't been clicked before
-  //Shuttle cards
-  //If the card has been clicked, end game
-  //Once the game is over, see if game score is higher than pervious score, if it is then make it top score
-  // clickAPic = id => {
-  //   let score = 0; 
-  //   let topScore = 0; 
-  // }
-
-  // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>
         <NavBar
-          // makeScore={this.makeScore}
-          score={0}
-          topScore={0}>
+          message={this.state.message}
+          score={this.state.score}
+          topScore={this.state.topScore}>
         </NavBar>
         <Title>Clicky Game</Title>
         {this.state.friends.map(friend => (
