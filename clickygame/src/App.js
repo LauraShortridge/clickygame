@@ -10,18 +10,35 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    friends, 
-    score: 0,
-    topScore: 0
+      friends,
+      clickedFriends: [null],
+      score: 0,
+      topScore: 0
     };
   }
 
   shuffle = () => {
-    console.log("Shuffle works")
+    console.log("Shuffle works");
     let ctr = this.state.friends.length;
-    let temp; 
+    let temp;
     let index;
 
+    // console.log("makeScore is working");
+    // let score = this.state.score;
+    // let topScore = this.state.topScore;
+    // const friends = this.state.friends.filter(friend => friend.id);
+    // const clickedFriends = this.state.clickedFriends;
+
+    // if (score < 12) {
+    //   score ++;
+    //   // clickedFriends.push();
+    // } else if (score === 12) {
+    //   console.log("you won!")
+    //   topScore = 12; 
+    // }
+
+    // console.log(score, topScore)
+    // console.log(clickedFriends)
     // While there are elements in the array
     while (ctr > 0) {
       // Pick a random index
@@ -33,32 +50,53 @@ class App extends Component {
       friends[ctr] = friends[index];
       friends[index] = temp;
     }
-    this.setState({ friends });
+    
+    state(); 
+    // this.setState({
+    //   friends
+    //   // score, 
+    //   // topScore
+    // });
   }
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
+  state() {
+    this.setState({
+      friends,
+      score,
+      topScore
+    })
+  }
 
   makeScore = id => {
     console.log("makeScore is working");
     let score = this.state.score;
     let topScore = this.state.topScore;
-    const friends = this.state.friends.filter(friend => friend.id !== id);
+    const friends = this.state.friends;
+    const clickedFriends = this.state.clickedFriends;
+    let i; 
+
+    for (i = 0; i < clickedFriends.length; i++) {
+      if (id !== clickedFriends[i] && score < 12) {
+        score++
+        clickedFriends.push(id);
+      } else if (score === 12) {
+        console.log("you won!")
+        topScore = 12;
+      }
+    }
+
+    // if (id === clickedFriends[i] && score < 12) {
+    //   score++
+    //   clickedFriends.push(id);
+    // } else if (score === 12) {
+    //   console.log("you won!")
+    //   topScore = 12;
+    // }
 
     console.log(score, topScore)
+    console.log(clickedFriends)
 
-
- 
-    if (score < 12) {
-      score ++
-      
-    } else if (score === 12)
-
-    this.setState({score, topScore, friends})
+    this.setState({ friends, score, topScore })
   }
 
 
@@ -76,7 +114,7 @@ class App extends Component {
     return (
       <Wrapper>
         <NavBar
-          makeScore={this.makeScore}
+          // makeScore={this.makeScore}
           score={0}
           topScore={0}>
         </NavBar>
@@ -87,6 +125,7 @@ class App extends Component {
             id={friend.id}
             key={friend.id}
             image={friend.image}
+            makeScore={this.makeScore}
           />
         ))}
       </Wrapper>

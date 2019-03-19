@@ -5,8 +5,8 @@ import "./style.css";
 function FriendCard(props) {
   return (
     <div className="card">
-      <img className="img-fluid remove" alt={props.name} src={props.image} onClick={() => props.shuffle()} />
-      <span onClick={() => props.makeScore()}>
+      <img className="img-fluid remove" alt={props.name} attr={props.id} src={props.image} onClick={() => props.shuffle()} />
+      <span onClick={() => props.makeScore(props.id)}>
         𝘅
       </span>
     </div>
