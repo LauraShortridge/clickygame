@@ -41,32 +41,31 @@ class App extends Component {
   }
 
   makeScore = id => {
-    console.log("makeScore is working");
+    // console.log("makeScore is working");
     let score = this.state.score;
     let topScore = this.state.topScore;
     const clickedFriends = this.state.clickedFriends;
     let message = this.state.message;
 
-    console.log(clickedFriends.indexOf(id), "indexOf")
+    // console.log(clickedFriends.indexOf(id), "indexOf")
 
-    if (clickedFriends.indexOf(id) === -1 && score < 12) {
+    if (clickedFriends.indexOf(id) === -1 && score <= 12) {
       clickedFriends.push(id);
       score++;
       message = "Correct!";
       console.log(clickedFriends, "new clickedFriends")
-      this.setState({clickedFriends, score, message});
-    } else if (score === 12) {
-      message = "You won!";
-      console.log("you won!")
-      this.setState({score: 0, clickedFriends: [null], topScore: 12, message})
+      this.setState({ clickedFriends, score, message });
+      if (score === 12) {
+        message = "You won!";
+        this.setState({ score: 0, clickedFriends: [null], topScore: 12, message })
+      }
     } else {
       console.log("you already clicked that, game over!")
+      message = "Game over! Try again."
       if (score > topScore) {
         topScore = score;
-        message = "Game over! Try again."
-        this.setState({score: 0, topScore, clickedFriends: [null], message})
       }
-      // this.setState({score: 0, topScore, clickedFriends: [null], message})
+      this.setState({score: 0, topScore, clickedFriends: [null], message})
     }
 
     console.log(this.state.score, score, this.state.topScore, topScore)
