@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Cinderella",
+    "image": "https://lumiere-a.akamaihd.net/v1/images/open-uri20150422-20810-nk3khp_5e60750e.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Ariel",
+    "image": "https://vignette.wikia.nocookie.net/princessdisney/images/6/60/Ariel.JPG/revision/latest?cb=20130427061152"
+  },
+  {
+    "id": 3,
+    "name": "Rapunzel",
+    "image": "https://i.pinimg.com/originals/72/27/11/722711f25ad8505b20234cd15c29d339.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Jasmine",
+    "image": "https://vignette.wikia.nocookie.net/princessdisney/images/c/cc/Jasmine.JPG/revision/latest?cb=20130427061432"
+  },
+  {
+    "id": 5,
+    "name": "Tiana",
+    "image": "https://vignette.wikia.nocookie.net/princessdisney/images/8/8d/Tiana.JPG/revision/latest?cb=20130427062054"
+  },
+  {
+    "id": 6,
+    "name": "Aurora",
+    "image": "http://images6.fanpop.com/image/photos/39000000/Sleeping-Beauty-Aurora-disney-princess-39040300-300-300.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Pocahontas",
+    "image": "https://vignette.wikia.nocookie.net/princessdisney/images/d/d8/Pocahontas.JPG/revision/latest?cb=20130427061746"
+  },
+  {
+    "id": 8,
+    "name": "Belle",
+    "image": "https://vignette.wikia.nocookie.net/princessdisney/images/2/27/Belle.JPG/revision/latest?cb=20130427061423"
+  },
+  {
+    "id": 9,
+    "name": "Snow White",
+    "image": "http://images6.fanpop.com/image/photos/38400000/Snow-White-Website-ten-original-disney-princesses-38405058-300-300.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Merida",
+    "image": "https://lumiere-a.akamaihd.net/v1/images/character_disneyprincess_merida_00154cb9.jpeg?region=0,0,300,300"
+  },
+  {
+    "id": 11,
+    "name": "Elsa",
+    "image": "/clickygame/static/media/Elsa.png"
+  },
+  {
+    "id": 12,
+    "name": "Moana",
+    "image": "/clickygame/static/media/Moana.jpeg"
+  }
+]
